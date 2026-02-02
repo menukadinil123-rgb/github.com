@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My Manika ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(135deg,#ff758c,#ff7eb3);
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+}
+
+/* Floating hearts */
+.heart{
+  position:absolute;
+  color:#ff3f6c;
+  font-size:18px;
+  animation:float 6s linear infinite;
+  opacity:0.7;
+}
+@keyframes float{
+  0%{transform:translateY(100vh); opacity:0;}
+  20%{opacity:1;}
+  100%{transform:translateY(-10vh); opacity:0;}
+}
+
+.page{
+  display:none;
+  background:white;
+  width:90%;
+  max-width:360px;
+  padding:25px;
+  border-radius:22px;
+  text-align:center;
+  box-shadow:0 15px 30px rgba(0,0,0,0.25);
+  animation:fade 0.8s;
+  z-index:2;
+}
+.page.active{display:block;}
+
+h1{color:#ff3f6c;}
+p{color:#444; line-height:1.6; font-size:15px;}
+
+button{
+  margin-top:20px;
+  padding:10px 22px;
+  background:#ff3f6c;
+  color:white;
+  border:none;
+  border-radius:25px;
+  font-size:14px;
+  cursor:pointer;
+}
+
+video{
+  width:100%;
+  border-radius:18px;
+  margin-top:15px;
+}
+
+/* Good luck animation */
+.goodluck{
+  font-size:16px;
+  color:#ff3f6c;
+  animation:pulse 1.2s infinite;
+  margin-top:10px;
+}
+@keyframes pulse{
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.1);}
+}
+
+@keyframes fade{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<audio id="music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Floating hearts -->
+<script>
+for(let i=0;i<25;i++){
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤️";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDelay=Math.random()*6+"s";
+  h.style.fontSize=(14+Math.random()*16)+"px";
+  document.body.appendChild(h);
+}
+</script>
+
+<!-- PAGE 1 -->
+<div class="page active">
+  <h1>Happy Valentine’s 💖</h1>
+  <p><strong>My Manika ❤️</strong></p>
+  <button onclick="nextPage()">Continue ➡️</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <p>
+    I know you’re bored these days 😌<br>
+    So I made this just for you 💕
+  </p>
+  <p>Wanna continue? 👉</p>
+  <button onclick="nextPage()">Yes ❤️</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+  <h1>Us 💎</h1>
+
+  <video id="video" controls playsinline>
+    <source src="video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <div class="goodluck">Good luck for your O/Ls Manika 💪📚</div>
+  <p>Tap Continue to start music 🎶</p>
+  <button onclick="playAll(); nextPage()">Continue 💕</button>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page">
+  <p>
+    Bbi,<br>
+    ඔයා හොඳට O/Ls කරනවා කියලා මං දන්නවා ❤️<br><br>
+
+    සුදු, මං Bbi එක්කම ඉන්නවා හැම වෙලේම 🤍<br>
+    මං හැම වෙලේම wish කරන්නේ<br>
+    Bbi හොඳ result එකක් දාලා<br>
+    දුන්න ගමන් මං ලඟට එනවා බලන්න 🥺💞<br><br>
+
+    මගේ පණා,<br>
+    මං දන්නවා ඔයා ගොඩක් මහන්සි වෙනවා කියලා.<br>
+    තව චුටි කාලයක් නේ 🕊️<br>
+    ඒ හින්දා ඉවසගෙන ඉන්න රත්තරං 💎<br><br>
+
+    ඒක පස්සේ අපි දෙන්නටම<br>
+    සතුටින් ඉන්න පුළුවන් නේ 😊<br><br>
+
+    බුදු සරණයි මගේ පණා 🙏<br><br>
+    I love you sooo much ❤️❤️❤️
+  </p>
+</div>
+
+<script>
+let current = 0;
+const pages = document.querySelectorAll('.page');
+const music = document.getElementById('music');
+const video = document.getElementById('video');
+
+function nextPage(){
+  pages[current].classList.remove('active');
+  current++;
+  pages[current].classList.add('active');
+}
+
+function playAll(){
+  if(music){
+    music.play().catch(()=>{});
+  }
+  if(video){
+    video.play().catch(()=>{});
+  }
+}
+</script>
+
+</body>
+</html>
